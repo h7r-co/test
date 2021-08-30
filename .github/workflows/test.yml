@@ -24,7 +24,12 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - name: Output org var
+      - name: Output org action var
         run: echo $SECRET | sed -e 's/\(.\)/\1\n/g'
         env:
           SECRET: ${{ secrets.ORG_ACTION_SECRET }}
+
+      - name: Output org dependabot var
+        run: echo $SECRET | sed -e 's/\(.\)/\1\n/g'
+        env:
+          SECRET: ${{ secrets.ORG_DEP_SECRET }}
