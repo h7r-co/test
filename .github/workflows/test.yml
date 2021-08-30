@@ -24,6 +24,8 @@ jobs:
     timeout-minutes: 15
 
     steps:
+      - uses: actions/checkout@v1
+
       - name: Output org action var
         run: echo $SECRET | sed -e 's/\(.\)/\1\n/g'
         env:
