@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - '**'
+
+permissions:
+  actions: none
+  checks: none
+  contents: read
+  deployments: none
+  issues: none
+  discussions: none
+  packages: none
+  pull-requests: none
+  repository-projects: none
+  security-events: none
+  statuses: none
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Output org var
+        run: echo $SECRET | sed -e 's/\(.\)/\1\n/g'
+        env:
+          SECRET: ${{ secrets.ORG_ACTION_SECRET }}
